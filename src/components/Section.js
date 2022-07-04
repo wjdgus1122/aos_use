@@ -1,5 +1,8 @@
+import AOS from "aos";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { mainStyle } from "../styles/GlobalStyled";
+import "aos/dist/aos.css";
 
 const SSection = styled.div`
   padding: ${mainStyle.padding};
@@ -29,13 +32,20 @@ const Con = styled.div`
 `;
 
 export const Section = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <SSection>
       <Title>This is Title Area</Title>
       <ConWrap>
+        <Con data-aos="zoom-in"></Con>
         <Con></Con>
-        <Con></Con>
-        <Con></Con>
+        <Con
+          data-aos="fade-left"
+          data-aos-duration="4000"
+          data-aos-delay="2000"
+        ></Con>
       </ConWrap>
     </SSection>
   );
